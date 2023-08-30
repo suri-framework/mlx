@@ -109,6 +109,9 @@ module type I = sig
   val ul : ... -> children -> element
   val li : ... -> children -> element
   ...
+  val list : element list -> element
+  val string : string -> element
+  val int : int -> element
 end
 
 module HTMLFUNCTOR (T: I) = struct
@@ -121,6 +124,8 @@ module Tyxml = HTMLFUNCTOR({ div = tyxml.div; etc... })
 ```
 
 # Self closing tag
+
+HTMLFUNCTOR will make sure self-closing tags don't receive children
 
 ```
 let is_self_closing_tag = function
