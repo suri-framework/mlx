@@ -1,5 +1,0 @@
-# dune init project mlx
-# OCAMLPARAM: unset
-# Shared cache: disabled
-# Workspace root: /Users/ostera/repos/github.com/leostera/mlx/mlx
-# Auto-detected concurrency: 20
