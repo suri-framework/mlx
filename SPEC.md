@@ -1,10 +1,11 @@
-OCaml with JSX
+OCaml with JSX (mlx, because xml is already taken)
 
 - Transform .mlx into .ml
 - Provide a HTMLFUNCTOR to create libs on top of JSX
-- react-mlx should call HTMLFUNCTOR with custom bindings like React.createElement
-- tyxml-mlx should call HTMLFUNCTOR with tyxml html lib
-- htmx-mlx will use tyxml-mlx to define a interface for htmx
+  - react.mlx should call HTMLFUNCTOR with custom bindings like React.createElement, and other React specific stuff
+  - tyxml.mlx should call HTMLFUNCTOR with tyxml html lib
+  - revery.mlx should call HTMLFUNCTOR with revery html lib
+    - htmx.mlx will use tyxml-mlx to define a interface for htmx
 
 ```
 (* input.mlx *)
