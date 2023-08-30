@@ -105,9 +105,9 @@ The functor should force implementors to expose div/ul/li/etc functions, but als
 
 ```
 module type I = sig
-  val div : attrs -> children -> node
-  val ul : attrs -> children -> node
-  val li : attrs -> children -> node
+  val div : ... -> children -> element
+  val ul : ... -> children -> element
+  val li : ... -> children -> element
   ...
 end
 
