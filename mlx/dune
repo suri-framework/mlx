@@ -1,0 +1,13 @@
+(executable
+ (public_name mlx)
+ (package mlx)
+ (name mlx)
+ (modules mlx mlx_parser)
+ (libraries compiler-libs menhirLib))
+
+(menhir
+ (modules mlx_parser))
+
+(ocamllex
+ (modules lexer)
+ (mode fallback))
