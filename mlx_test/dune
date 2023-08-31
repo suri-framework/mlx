@@ -1,4 +1,11 @@
 (library
  (name hello_world)
+ (modules :standard \ print)
+ (libraries mlx_htmx)
+ (flags -open Mlx_htmx))
+
+(executable
+ (name print)
+ (modules print)
  (libraries mlx_htmx)
  (flags -open Mlx_htmx))

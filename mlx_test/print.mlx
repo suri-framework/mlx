@@ -1,0 +1,10 @@
+let hello_world ~message () =
+  <div id="main">
+    <span className="font-bold"> "hello" </span>
+    <span className="font-bold"> "world!" </span>
+    (message|>string)
+  </div>
+
+let () =
+  Mlx_htmx.to_string (<hello_world message="oh yes" />)
+  |> print_string

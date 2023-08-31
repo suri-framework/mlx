@@ -1,412 +1,68 @@
-let create tag 
-  ?(about)
-  ?(accentHeight)
-  ?(accept)
-  ?(acceptCharset)
-  ?(accessKey)
-  ?(accumulate)
-  ?(action)
-  ?(additive)
-  ?(alignmentBaseline)
-  ?(allowFullScreen)
-  ?(allowReorder)
-  ?(alphabetic)
-  ?(alt)
-  ?(amplitude)
-  ?(arabicForm)
-  ?(ariaActivedescendant)
-  ?(ariaAtomic)
-  ?(ariaBusy)
-  ?(ariaColcount)
-  ?(ariaColindex)
-  ?(ariaColspan)
-  ?(ariaControls)
-  ?(ariaDescribedby)
-  ?(ariaDetails )
-  ?(ariaDisabled)
-  ?(ariaErrormessage)
-  ?(ariaExpanded)
-  ?(ariaFlowto)
-  ?(ariaGrabbed)
-  ?(ariaHidden)
-  ?(ariaKeyshortcuts)
-  ?(ariaLabel)
-  ?(ariaLabelledby)
-  ?(ariaLevel)
-  ?(ariaModal)
-  ?(ariaMultiline)
-  ?(ariaMultiselectable)
-  ?(ariaOwns)
-  ?(ariaPlaceholder)
-  ?(ariaPosinset)
-  ?(ariaReadonly)
-  ?(ariaRelevant)
-  ?(ariaRequired)
-  ?(ariaRoledescription)
-  ?(ariaRowcount)
-  ?(ariaRowindex)
-  ?(ariaRowspan)
-  ?(ariaSelected)
-  ?(ariaSetsize)
-  ?(ariaSort)
-  ?(ariaValuemax)
-  ?(ariaValuemin)
-  ?(ariaValuenow)
-  ?(ariaValuetext)
-  ?(ascent)
-  ?(async)
-  ?(attributeName)
-  ?(attributeType)
-  ?(autoCapitalize)
-  ?(autoComplete)
-  ?(autoFocus)
-  ?(autoPlay)
-  ?(autoReverse)
-  ?(azimuth)
-  ?(baseFrequency)
-  ?(baseProfile)
-  ?(baselineShift)
-  ?(bbox)
-  ?(begin_)
-  ?(bias)
-  ?(by)
-  ?(calcMode)
-  ?(capHeight)
-  ?(challenge)
-  ?(charSet)
-  ?(checked)
-  ?(cite)
-  ?(className)
-  ?(clip)
-  ?(clipPath)
-  ?(clipPathUnits)
-  ?(clipRule)
-  ?(colSpan)
-  ?(colorInterpolation)
-  ?(colorInterpolationFilters)
-  ?(colorProfile)
-  ?(colorRendering)
-  ?(cols)
-  ?(content)
-  ?(contentEditable)
-  ?(contentScriptType)
-  ?(contentStyleType)
-  ?(contextMenu)
-  ?(controls)
-  ?(coords)
-  ?(crossOrigin)
-  ?(cursor)
-  ?(cx)
-  ?(cy)
-  ?(d)
-  ?(data)
-  ?(datatype)
-  ?(dateTime)
-  ?(decelerate)
-  ?(default)
-  ?(defaultChecked)
-  ?(defaultValue)
-  ?(defer)
-  ?(descent)
-  ?(diffuseConstant)
-  ?(dir)
-  ?(direction)
-  ?(disabled)
-  ?(display)
-  ?(divisor)
-  ?(dominantBaseline)
-  ?(download)
-  ?(draggable)
-  ?(dur)
-  ?(dx)
-  ?(dy)
-  ?(edgeMode)
-  ?(elevation)
-  ?(enableBackground)
-  ?(encType)
-  ?(end_)
-  ?(exponent)
-  ?(externalResourcesRequired)
-  ?(fill)
-  ?(fillOpacity)
-  ?(fillRule)
-  ?(filter)
-  ?(filterRes)
-  ?(filterUnits)
-  ?(floodColor)
-  ?(floodOpacity)
-  ?(focusable)
-  ?(fomat)
-  ?(fontFamily)
-  ?(fontSize)
-  ?(fontSizeAdjust)
-  ?(fontStretch)
-  ?(fontStyle)
-  ?(fontVariant)
-  ?(fontWeight)
-  ?(form)
-  ?(formAction)
-  ?(formMethod)
-  ?(formTarget)
-  ?(from)
-  ?(fx)
-  ?(fy)
-  ?(g1)
-  ?(g2)
-  ?(glyphName)
-  ?(glyphOrientationHorizontal)
-  ?(glyphOrientationVertical)
-  ?(glyphRef)
-  ?(gradientTransform)
-  ?(gradientUnits)
-  ?(hanging)
-  ?(headers)
-  ?(height)
-  ?(hidden)
-  ?(high)
-  ?(horizAdvX)
-  ?(horizOriginX)
-  ?(href)
-  ?(hrefLang)
-  ?(htmlFor)
-  ?(httpEquiv)
-  ?(icon)
-  ?(id)
-  ?(ideographic)
-  ?(imageRendering)
-  ?(in2)
-  ?(in_)
-  ?(inlist)
-  ?(inputMode)
-  ?(integrity)
-  ?(intercept)
-  ?(itemID)
-  ?(itemProp)
-  ?(itemRef)
-  ?(itemScope)
-  ?(itemType)
-  ?(k)
-  ?(k1)
-  ?(k2)
-  ?(k3)
-  ?(k4)
-  ?(kernelMatrix)
-  ?(kernelUnitLength)
-  ?(kerning)
-  ?(key)
-  ?(keyPoints)
-  ?(keySplines)
-  ?(keyTimes)
-  ?(keyType)
-  ?(kind)
-  ?(label)
-  ?(lang)
-  ?(lengthAdjust)
-  ?(letterSpacing)
-  ?(lightingColor)
-  ?(limitingConeAngle)
-  ?(list)
-  ?(local)
-  ?(loop)
-  ?(low)
-  ?(manifest)
-  ?(markerEnd)
-  ?(markerHeight)
-  ?(markerMid)
-  ?(markerStart)
-  ?(markerUnits)
-  ?(markerWidth)
-  ?(mask)
-  ?(maskContentUnits)
-  ?(maskUnits)
-  ?(mathematical)
-  ?(max)
-  ?(maxLength)
-  ?(media)
-  ?(mediaGroup)
-  ?(method_)
-  ?(min)
-  ?(minLength)
-  ?(mode)
-  ?(multiple)
-  ?(muted)
-  ?(name)
-  ?(noValidate)
-  ?(nonce)
-  ?(numOctaves)
-  ?(offset)
-  ?(opacity)
-  ?(open_)
-  ?(operator)
-  ?(optimum)
-  ?(order)
-  ?(orient)
-  ?(orientation)
-  ?(origin)
-  ?(overflow)
-  ?(overflowX)
-  ?(overflowY)
-  ?(overlinePosition)
-  ?(overlineThickness)
-  ?(paintOrder)
-  ?(panose1)
-  ?(pathLength)
-  ?(pattern)
-  ?(patternContentUnits)
-  ?(patternTransform)
-  ?(patternUnits)
-  ?(placeholder)
-  ?(playsInline)
-  ?(pointerEvents)
-  ?(points)
-  ?(pointsAtX)
-  ?(pointsAtY)
-  ?(pointsAtZ)
-  ?(poster)
-  ?(prefix)
-  ?(preload)
-  ?(preserveAlpha)
-  ?(preserveAspectRatio)
-  ?(primitiveUnits)
-  ?(property)
-  ?(r)
-  ?(radioGroup)
-  ?(radius)
-  ?(readOnly)
-  ?(refX)
-  ?(refY)
-  ?(rel)
-  ?(renderingIntent)
-  ?(repeatCount)
-  ?(repeatDur)
-  ?(required)
-  ?(requiredExtensions)
-  ?(requiredFeatures)
-  ?(resource)
-  ?(restart)
-  ?(result)
-  ?(reversed)
-  ?(role)
-  ?(rotate)
-  ?(rowSpan)
-  ?(rows)
-  ?(rx)
-  ?(ry)
-  ?(sandbox)
-  ?(scale)
-  ?(scope)
-  ?(scoped)
-  ?(scrolling)
-  ?(seed)
-  ?(selected)
-  ?(shape)
-  ?(shapeRendering)
-  ?(size)
-  ?(sizes)
-  ?(slope)
-  ?(spacing)
-  ?(span)
-  ?(specularConstant)
-  ?(specularExponent)
-  ?(speed)
-  ?(spellCheck)
-  ?(spreadMethod)
-  ?(src)
-  ?(srcDoc)
-  ?(srcLang)
-  ?(srcSet)
-  ?(start)
-  ?(startOffset)
-  ?(stdDeviation)
-  ?(stemh)
-  ?(stemv)
-  ?(step)
-  ?(stitchTiles)
-  ?(stopColor)
-  ?(stopOpacity)
-  ?(strikethroughPosition)
-  ?(strikethroughThickness)
-  ?(stroke)
-  ?(strokeDasharray)
-  ?(strokeDashoffset)
-  ?(strokeLinecap)
-  ?(strokeLinejoin)
-  ?(strokeMiterlimit)
-  ?(strokeOpacity)
-  ?(strokeWidth)
-  ?(summary)
-  ?(surfaceScale)
-  ?(systemLanguage)
-  ?(tabIndex)
-  ?(tableValues)
-  ?(target)
-  ?(targetX)
-  ?(targetY)
-  ?(textAnchor)
-  ?(textDecoration)
-  ?(textLength)
-  ?(textRendering)
-  ?(title)
-  ?(to_)
-  ?(transform)
-  ?(type_)
-  ?(typeof)
-  ?(u1)
-  ?(u2)
-  ?(underlinePosition)
-  ?(underlineThickness)
-  ?(unicode)
-  ?(unicodeBidi)
-  ?(unicodeRange)
-  ?(unitsPerEm)
-  ?(useMap)
-  ?(vAlphabetic)
-  ?(vHanging)
-  ?(vIdeographic)
-  ?(vMathematical)
-  ?(value)
-  ?(values)
-  ?(vectorEffect)
-  ?(version)
-  ?(vertAdvX)
-  ?(vertAdvY)
-  ?(vertOriginX)
-  ?(vertOriginY)
-  ?(viewBox)
-  ?(viewTarget)
-  ?(visibility)
-  ?(vocab)
-  ?(width)
-  ?(widths)
-  ?(wordSpacing)
-  ?(wrap)
-  ?(writingMode)
-  ?(x)
-  ?(x1)
-  ?(x2)
-  ?(xChannelSelector)
-  ?(xHeight)
-  ?(xlinkActuate)
-  ?(xlinkArcrole)
-  ?(xlinkHref)
-  ?(xlinkRole)
-  ?(xlinkShow)
-  ?(xlinkTitle)
-  ?(xlinkType)
-  ?(xmlBase)
-  ?(xmlLang)
-  ?(xmlSpace)
-  ?(xmlns)
-  ?(xmlnsXlink)
-  ?(y)
-  ?(y1)
-  ?(y2)
-  ?(yChannelSelector)
-  ?(z)
-  ?(zoomAndPan)
-  ?(children = [])
-  () = 
-    let attrs = [
+let create tag ?about ?accentHeight ?accept ?acceptCharset ?accessKey
+    ?accumulate ?action ?additive ?alignmentBaseline ?allowFullScreen
+    ?allowReorder ?alphabetic ?alt ?amplitude ?arabicForm ?ariaActivedescendant
+    ?ariaAtomic ?ariaBusy ?ariaColcount ?ariaColindex ?ariaColspan ?ariaControls
+    ?ariaDescribedby ?ariaDetails ?ariaDisabled ?ariaErrormessage ?ariaExpanded
+    ?ariaFlowto ?ariaGrabbed ?ariaHidden ?ariaKeyshortcuts ?ariaLabel
+    ?ariaLabelledby ?ariaLevel ?ariaModal ?ariaMultiline ?ariaMultiselectable
+    ?ariaOwns ?ariaPlaceholder ?ariaPosinset ?ariaReadonly ?ariaRelevant
+    ?ariaRequired ?ariaRoledescription ?ariaRowcount ?ariaRowindex ?ariaRowspan
+    ?ariaSelected ?ariaSetsize ?ariaSort ?ariaValuemax ?ariaValuemin
+    ?ariaValuenow ?ariaValuetext ?ascent ?async ?attributeName ?attributeType
+    ?autoCapitalize ?autoComplete ?autoFocus ?autoPlay ?autoReverse ?azimuth
+    ?baseFrequency ?baseProfile ?baselineShift ?bbox ?begin_ ?bias ?by ?calcMode
+    ?capHeight ?challenge ?charSet ?checked ?cite ?className ?clip ?clipPath
+    ?clipPathUnits ?clipRule ?colSpan ?colorInterpolation
+    ?colorInterpolationFilters ?colorProfile ?colorRendering ?cols ?content
+    ?contentEditable ?contentScriptType ?contentStyleType ?contextMenu ?controls
+    ?coords ?crossOrigin ?cursor ?cx ?cy ?d ?data ?datatype ?dateTime
+    ?decelerate ?default ?defaultChecked ?defaultValue ?defer ?descent
+    ?diffuseConstant ?dir ?direction ?disabled ?display ?divisor
+    ?dominantBaseline ?download ?draggable ?dur ?dx ?dy ?edgeMode ?elevation
+    ?enableBackground ?encType ?end_ ?exponent ?externalResourcesRequired ?fill
+    ?fillOpacity ?fillRule ?filter ?filterRes ?filterUnits ?floodColor
+    ?floodOpacity ?focusable ?fomat ?fontFamily ?fontSize ?fontSizeAdjust
+    ?fontStretch ?fontStyle ?fontVariant ?fontWeight ?form ?formAction
+    ?formMethod ?formTarget ?from ?fx ?fy ?g1 ?g2 ?glyphName
+    ?glyphOrientationHorizontal ?glyphOrientationVertical ?glyphRef
+    ?gradientTransform ?gradientUnits ?hanging ?headers ?height ?hidden ?high
+    ?horizAdvX ?horizOriginX ?href ?hrefLang ?htmlFor ?httpEquiv ?icon ?id
+    ?ideographic ?imageRendering ?in2 ?in_ ?inlist ?inputMode ?integrity
+    ?intercept ?itemID ?itemProp ?itemRef ?itemScope ?itemType ?k ?k1 ?k2 ?k3
+    ?k4 ?kernelMatrix ?kernelUnitLength ?kerning ?key ?keyPoints ?keySplines
+    ?keyTimes ?keyType ?kind ?label ?lang ?lengthAdjust ?letterSpacing
+    ?lightingColor ?limitingConeAngle ?list ?local ?loop ?low ?manifest
+    ?markerEnd ?markerHeight ?markerMid ?markerStart ?markerUnits ?markerWidth
+    ?mask ?maskContentUnits ?maskUnits ?mathematical ?max ?maxLength ?media
+    ?mediaGroup ?method_ ?min ?minLength ?mode ?multiple ?muted ?name
+    ?noValidate ?nonce ?numOctaves ?offset ?opacity ?open_ ?operator ?optimum
+    ?order ?orient ?orientation ?origin ?overflow ?overflowX ?overflowY
+    ?overlinePosition ?overlineThickness ?paintOrder ?panose1 ?pathLength
+    ?pattern ?patternContentUnits ?patternTransform ?patternUnits ?placeholder
+    ?playsInline ?pointerEvents ?points ?pointsAtX ?pointsAtY ?pointsAtZ ?poster
+    ?prefix ?preload ?preserveAlpha ?preserveAspectRatio ?primitiveUnits
+    ?property ?r ?radioGroup ?radius ?readOnly ?refX ?refY ?rel ?renderingIntent
+    ?repeatCount ?repeatDur ?required ?requiredExtensions ?requiredFeatures
+    ?resource ?restart ?result ?reversed ?role ?rotate ?rowSpan ?rows ?rx ?ry
+    ?sandbox ?scale ?scope ?scoped ?scrolling ?seed ?selected ?shape
+    ?shapeRendering ?size ?sizes ?slope ?spacing ?span ?specularConstant
+    ?specularExponent ?speed ?spellCheck ?spreadMethod ?src ?srcDoc ?srcLang
+    ?srcSet ?start ?startOffset ?stdDeviation ?stemh ?stemv ?step ?stitchTiles
+    ?stopColor ?stopOpacity ?strikethroughPosition ?strikethroughThickness
+    ?stroke ?strokeDasharray ?strokeDashoffset ?strokeLinecap ?strokeLinejoin
+    ?strokeMiterlimit ?strokeOpacity ?strokeWidth ?summary ?surfaceScale
+    ?systemLanguage ?tabIndex ?tableValues ?target ?targetX ?targetY ?textAnchor
+    ?textDecoration ?textLength ?textRendering ?title ?to_ ?transform ?type_
+    ?typeof ?u1 ?u2 ?underlinePosition ?underlineThickness ?unicode ?unicodeBidi
+    ?unicodeRange ?unitsPerEm ?useMap ?vAlphabetic ?vHanging ?vIdeographic
+    ?vMathematical ?value ?values ?vectorEffect ?version ?vertAdvX ?vertAdvY
+    ?vertOriginX ?vertOriginY ?viewBox ?viewTarget ?visibility ?vocab ?width
+    ?widths ?wordSpacing ?wrap ?writingMode ?x ?x1 ?x2 ?xChannelSelector
+    ?xHeight ?xlinkActuate ?xlinkArcrole ?xlinkHref ?xlinkRole ?xlinkShow
+    ?xlinkTitle ?xlinkType ?xmlBase ?xmlLang ?xmlSpace ?xmlns ?xmlnsXlink ?y ?y1
+    ?y2 ?yChannelSelector ?z ?zoomAndPan ?(children = []) () =
+  let attr =
+    [
       Option.map (fun x -> ("about", x)) about;
       Option.map (fun x -> ("accentHeight", x)) accentHeight;
       Option.map (fun x -> ("accept", x)) accept;
@@ -492,7 +148,9 @@ let create tag
       Option.map (fun x -> ("clipRule", x)) clipRule;
       Option.map (fun x -> ("colSpan", string_of_int x)) colSpan;
       Option.map (fun x -> ("colorInterpolation", x)) colorInterpolation;
-      Option.map (fun x -> ("colorInterpolationFilters", x)) colorInterpolationFilters;
+      Option.map
+        (fun x -> ("colorInterpolationFilters", x))
+        colorInterpolationFilters;
       Option.map (fun x -> ("colorProfile", x)) colorProfile;
       Option.map (fun x -> ("colorRendering", x)) colorRendering;
       Option.map (fun x -> ("cols", string_of_int x)) cols;
@@ -535,7 +193,9 @@ let create tag
       Option.map (fun x -> ("encType", x)) encType;
       Option.map (fun x -> ("end", x)) end_;
       Option.map (fun x -> ("exponent", x)) exponent;
-      Option.map (fun x -> ("externalResourcesRequired", x)) externalResourcesRequired;
+      Option.map
+        (fun x -> ("externalResourcesRequired", x))
+        externalResourcesRequired;
       Option.map (fun x -> ("fill", x)) fill;
       Option.map (fun x -> ("fillOpacity", x)) fillOpacity;
       Option.map (fun x -> ("fillRule", x)) fillRule;
@@ -563,8 +223,12 @@ let create tag
       Option.map (fun x -> ("g1", x)) g1;
       Option.map (fun x -> ("g2", x)) g2;
       Option.map (fun x -> ("glyphName", x)) glyphName;
-      Option.map (fun x -> ("glyphOrientationHorizontal", x)) glyphOrientationHorizontal;
-      Option.map (fun x -> ("glyphOrientationVertical", x)) glyphOrientationVertical;
+      Option.map
+        (fun x -> ("glyphOrientationHorizontal", x))
+        glyphOrientationHorizontal;
+      Option.map
+        (fun x -> ("glyphOrientationVertical", x))
+        glyphOrientationVertical;
       Option.map (fun x -> ("glyphRef", x)) glyphRef;
       Option.map (fun x -> ("gradientTransform", x)) gradientTransform;
       Option.map (fun x -> ("gradientUnits", x)) gradientUnits;
@@ -815,6 +479,5 @@ let create tag
       Option.map (fun x -> ("zoomAndPan", x)) zoomAndPan;
     ]
     |> List.filter_map (fun x -> x)
-    |> List.map (fun (k,v) -> Tyxml.Xml.string_attrib k v)
-     in
-     Tyxml.Xml.node tag ~a:attrs children
+  in
+  Element.Node { tag; attr; children }
