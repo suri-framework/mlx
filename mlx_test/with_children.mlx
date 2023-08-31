@@ -1,0 +1,3 @@
+let hello () = <div />
+let world () = <div />
+let _ = < a > <hello/> <world/> </ a >

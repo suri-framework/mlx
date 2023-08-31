@@ -115,6 +115,21 @@ let mkoperator =
 let mkpatvar ~loc name =
   mkpat ~loc (Ppat_var (mkrhs name loc))
 
+let mkunit ~loc = 
+    let unit_loc = mkloc (Lident "()") (make_loc loc) in
+    mkexp ~loc (Pexp_construct (unit_loc, None))
+
+let mktuple ~loc els = mkexp ~loc (Pexp_tuple els)
+
+let mknil ~loc = 
+    let unit_loc = mkloc (Lident "[]") (make_loc loc) in
+    mkexp ~loc (Pexp_construct (unit_loc, None))
+
+
+let mkcons ~loc head tail = 
+    let cons = mkloc (Lident "::") (make_loc loc) in
+    mkexp ~loc (Pexp_construct (cons, Some (mktuple ~loc [head; tail])))
+
 (*
   Ghost expressions and patterns:
   expressions and patterns that do not appear explicitly in the
@@ -704,9 +719,9 @@ let mk_directive ~loc name arg =
 %token LBRACKETGREATER        "[>"
 %token LBRACKETPERCENT        "[%"
 %token LBRACKETPERCENTPERCENT "[%%"
+%token LESSSLASH              "</"
 %token LESS                   "<"
 %token LESSMINUS              "<-"
-%token LESSSLASH              "</"
 %token LET                    "let"
 %token <string> LIDENT        "lident" (* just an example *)
 %token LPAREN                 "("
@@ -2485,15 +2500,53 @@ simple_expr:
 /* JSX begin */
 
 %inline jsx_element:
-  | LESS tag=mkrhs(val_longident) SLASHGREATER {
-    let tag = mkexp ~loc:$loc(tag) (Pexp_ident tag) in
-    let unit = 
-      let unit_loc = mkloc (Lident "()") (make_loc $loc(tag)) in
-      mkexp ~loc:$loc(tag) (Pexp_construct (unit_loc, None))
-    in
-    Pexp_apply (tag, [Nolabel, unit])
+  | el = jsx_self_closing { el }
+  | el = jsx_with_closing { el }
+
+/* handle the cases where there is a closing tag, and possibly children. */
+%inline jsx_with_closing:
+  | LESS tag_open=mkrhs(val_longident)
+      props=llist(jsx_attr)
+    GREATER 
+      children=llist(jsx_children)
+    LESSSLASH mkrhs(val_longident) GREATER {
+    let loc = $loc(tag_open) in
+    let tag = mkexp ~loc (Pexp_ident tag_open) in
+
+    let children = List.fold_right (fun child acc ->
+      mkcons ~loc child acc
+    ) children (mknil ~loc) in
+
+    let default_args = [
+      Labelled "children", children;
+      Nolabel, mkunit ~loc
+    ] in
+
+    Pexp_apply (tag, props @ default_args )
   }
 
+/* handle the cases with no children and a self-closing tag */
+%inline jsx_self_closing:
+  | LESS tag=mkrhs(val_longident) props=llist(jsx_attr) SLASHGREATER {
+    let loc = $loc(tag) in
+    let tag = mkexp ~loc (Pexp_ident tag) in
+    Pexp_apply (tag, props @ [Nolabel, mkunit ~loc])
+  }
+
+/* handle the children of a jsx tag */
+jsx_children:
+  | el = jsx_element { mkexp ~loc:$loc(el) el }
+  | STRING {
+      let (s, strloc, d) = $1 in
+      let loc = $loc($1) in
+      let jsx_string = mkexp ~loc (Pexp_ident (mkloc (Lident "string") strloc)) in
+      let str = mkexp ~loc (Pexp_constant (Pconst_string (s, strloc, d))) in
+      mkexp ~loc (Pexp_apply (jsx_string, [Nolabel, str]))
+  }
+  | simple_expr { $1 }
+
+jsx_attr: 
+  | id=LIDENT EQUAL e=simple_expr { (Labelled id, e) }
 /* JSX end */
 
 labeled_simple_expr:

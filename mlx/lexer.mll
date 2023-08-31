@@ -344,6 +344,10 @@ let identchar_latin1 =
 
 let symbolchar =
   ['!' '$' '%' '&' '*' '+' '-' '.' '/' ':' '<' '=' '>' '?' '@' '^' '|' '~']
+let symbolchar_no_greater_than =
+  ['!' '$' '%' '&' '*' '+' '-' '.' '/' ':' '<' '=' '?' '@' '^' '|' '~']
+let symbolchar_no_lesser_than =
+  ['!' '$' '%' '&' '*' '+' '-' '.' '/' ':' '=' '>' '?' '@' '^' '|' '~']
 let dotsymbolchar =
   ['!' '$' '%' '&' '*' '+' '-' '/' ':' '=' '>' '?' '@' '^' '|']
 let symbolchar_or_hash =
@@ -530,7 +534,6 @@ rule token = parse
   | "*"  { STAR }
   | ","  { COMMA }
   | "->" { MINUSGREATER }
-  | "/>" { SLASHGREATER }
   | "."  { DOT }
   | ".." { DOTDOT }
   | "." (dotsymbolchar symbolchar* as op) { DOTOP op }
@@ -541,8 +544,8 @@ rule token = parse
   | ";"  { SEMI }
   | ";;" { SEMISEMI }
   | "<"  { LESS }
-  | "<-" { LESSMINUS }
   | "</" { LESSSLASH }
+  | "<-" { LESSMINUS }
   | "="  { EQUAL }
   | "["  { LBRACKET }
   | "[|" { LBRACKETBAR }
@@ -555,6 +558,7 @@ rule token = parse
   | "||" { BARBAR }
   | "|]" { BARRBRACKET }
   | ">"  { GREATER }
+  | "/>" { SLASHGREATER }
   | ">]" { GREATERRBRACKET }
   | "}"  { RBRACE }
   | ">}" { GREATERRBRACE }
@@ -575,8 +579,9 @@ rule token = parse
             { PREFIXOP op }
   | ['~' '?'] symbolchar_or_hash + as op
             { PREFIXOP op }
-  | ['=' '<' '>' '|' '&' '$'] symbolchar * as op
+  | ['=' '<' '|' '&' '$'] symbolchar * as op
             { INFIXOP0 op }
+  | ">" symbolchar_no_lesser_than * as op { INFIXOP0 op }
   | ['@' '^'] symbolchar * as op
             { INFIXOP1 op }
   | ['+' '-'] symbolchar * as op
@@ -584,8 +589,9 @@ rule token = parse
   | "**" symbolchar * as op
             { INFIXOP4 op }
   | '%'     { PERCENT }
-  | ['*' '/' '%'] symbolchar * as op
+  | ['*' '%'] symbolchar * as op
             { INFIXOP3 op }
+  | "/" symbolchar_no_greater_than * as op { INFIXOP0 op }
   | '#' symbolchar_or_hash + as op
             { HASHOP op }
   | "let" kwdopchar dotsymbolchar * as op

@@ -1,2 +1,4 @@
 (library
- (name hello_world))
+ (name hello_world)
+ (libraries mlx_htmx)
+ (flags -open Mlx_htmx))

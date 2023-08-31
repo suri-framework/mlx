@@ -9,6 +9,7 @@ depends: [
   "ocaml" {>= "5.0.0"}
   "dune" {>= "3.10" & >= "3.10.0"}
   "mlx" {version}
+  "mlx_htmx" {version}
   "odoc" {with-doc}
 ]
 build: [

@@ -1,4 +1,4 @@
 Test the (dialect ...) stanza inside the dune-project file.
 
-  $ mlx hello_world.mlx
-  Dejsxifying hello_world.mlx
+  $ cat self_closing.mlx | mlx
+  $ cat open_and_close.mlx | mlx

@@ -9,9 +9,8 @@ homepage: "https://github.com/leostera/mlx"
 bug-reports: "https://github.com/leostera/mlx/issues"
 depends: [
   "ocaml" {>= "5.0.0"}
-  "ppxlib" {>= "0.30.0"}
   "dune" {>= "3.10" & >= "3.10.0"}
-  "menhir" {>= "20230608"}
+  "mlx" {version}
   "odoc" {with-doc}
 ]
 build: [

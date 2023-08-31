@@ -1,0 +1,2 @@
+let separator () =
+    <hr id="half" on_click=(fun _e -> true) />

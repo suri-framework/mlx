@@ -1,0 +1,2 @@
+let world () = <div />
+let _ = < a > <span> <world/> </span> </ a >

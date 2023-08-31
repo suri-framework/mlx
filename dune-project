@@ -22,9 +22,19 @@
  (description "A longer description")
  (depends
   (ocaml (>= "5.0.0"))
-  (compiler-libs (>= "5.0.0"))
+  (ppxlib (>= "0.30.0"))
   (dune (>= "3.10.0"))
   (menhir (>= "20230608"))
+ ))
+
+(package
+ (name mlx_htmx)
+ (synopsis "A short synopsis")
+ (description "A longer description")
+ (depends
+  (ocaml (>= "5.0.0"))
+  (dune (>= "3.10.0"))
+  (mlx :version)
  ))
 
 (package
@@ -33,7 +43,9 @@
  (depends
   (ocaml (>= "5.0.0"))
   (dune (>= "3.10.0"))
-  (mlx :version)))
+  (mlx :version)
+  (mlx_htmx :version)
+  ))
 
 (dialect
  (name mlx)
