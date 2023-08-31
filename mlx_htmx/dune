@@ -1,3 +1,4 @@
 (library
   (public_name mlx_htmx)
-  (name mlx_htmx))
+  (name mlx_htmx)
+  (libraries tyxml))

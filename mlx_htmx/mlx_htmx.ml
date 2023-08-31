@@ -1,14 +1,9 @@
-let string s = s
+let string s = Tyxml.Xml.leaf s
 
-let div () = "<div />"
+let div = Tag.create "div"
 
-let hr ?id:_ ?on_click:_ () = "<hr />"
+let hr = Tag.create "hr"
 
-let a ?id:_ ?(children=[]) () = 
-  ignore children;
-  "<a />"
+let a = Tag.create "a"
 
-let span ?(children=[]) () =
-  ignore children;
-  "<span />"
-
+let span = Tag.create "span"
