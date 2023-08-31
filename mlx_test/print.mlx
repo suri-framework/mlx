@@ -1,10 +1,10 @@
 let hello_world ~message () =
   <div id="main">
     <span className="font-bold"> "hello" </span>
-    <span className="font-bold"> "world!" </span>
-    (message|>string)
+    <span className="font-bold"> (message|>string) </span>
   </div>
 
 let () =
-  Mlx_htmx.to_string (<hello_world message="oh yes" />)
+  let message = Sys.argv.(1) in
+  Mlx_htmx.to_string (<hello_world message=message />)
   |> print_string
