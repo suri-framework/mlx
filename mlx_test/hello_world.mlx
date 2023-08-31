@@ -1,1 +1,1 @@
-let make () = <div> "hello world" </div>
+let divider = < hr />

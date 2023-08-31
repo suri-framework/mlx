@@ -706,6 +706,7 @@ let mk_directive ~loc name arg =
 %token LBRACKETPERCENTPERCENT "[%%"
 %token LESS                   "<"
 %token LESSMINUS              "<-"
+%token LESSSLASH              "</"
 %token LET                    "let"
 %token <string> LIDENT        "lident" (* just an example *)
 %token LPAREN                 "("
@@ -741,6 +742,7 @@ let mk_directive ~loc name arg =
 %token RPAREN                 ")"
 %token SEMI                   ";"
 %token SEMISEMI               ";;"
+%token SLASHGREATER           "/>"
 %token HASH                   "#"
 %token <string> HASHOP        "##" (* just an example *)
 %token SIG                    "sig"
@@ -2477,7 +2479,23 @@ simple_expr:
   | mod_longident DOT
     LPAREN MODULE ext_attributes module_expr COLON error
       { unclosed "(" $loc($3) ")" $loc($8) }
+  | el = jsx_element { el }
 ;
+
+/* JSX begin */
+
+%inline jsx_element:
+  | LESS tag=mkrhs(val_longident) SLASHGREATER {
+    let tag = mkexp ~loc:$loc(tag) (Pexp_ident tag) in
+    let unit = 
+      let unit_loc = mkloc (Lident "()") (make_loc $loc(tag)) in
+      mkexp ~loc:$loc(tag) (Pexp_construct (unit_loc, None))
+    in
+    Pexp_apply (tag, [Nolabel, unit])
+  }
+
+/* JSX end */
+
 labeled_simple_expr:
     simple_expr %prec below_HASH
       { (Nolabel, $1) }

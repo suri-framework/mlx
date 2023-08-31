@@ -124,7 +124,7 @@ let store_escaped_char lexbuf c =
 let store_escaped_uchar lexbuf u =
   if in_comment () then store_lexeme lexbuf else store_string_utf_8_uchar u
 
-let compute_quoted_string_idloc {Location.loc_start = orig_loc } shift id =
+let compute_quoted_string_idloc {Location.loc_start = orig_loc; _ } shift id =
   let id_start_pos = orig_loc.Lexing.pos_cnum + shift in
   let loc_start =
     Lexing.{orig_loc with pos_cnum = id_start_pos }
@@ -306,8 +306,12 @@ let prepare_error loc = function
            "@{<hint>Hint@}: Did you mean ' ' or a type variable 'a?"] in
       Location.error ~loc ~sub msg
   | Keyword_as_label kwd ->
+        (*
+        TOOD(@ostera): restore this
+          "%a is a keyword, it cannot be used as label name" Style.inline_code kwd
+          *)
       Location.errorf ~loc
-        "%a is a keyword, it cannot be used as label name" Style.inline_code kwd
+        "%s is a keyword, it cannot be used as label name" kwd
   | Invalid_literal s ->
       Location.errorf ~loc "Invalid literal %s" s
   | Invalid_directive (dir, explanation) ->
@@ -526,6 +530,7 @@ rule token = parse
   | "*"  { STAR }
   | ","  { COMMA }
   | "->" { MINUSGREATER }
+  | "/>" { SLASHGREATER }
   | "."  { DOT }
   | ".." { DOTDOT }
   | "." (dotsymbolchar symbolchar* as op) { DOTOP op }
@@ -537,6 +542,7 @@ rule token = parse
   | ";;" { SEMISEMI }
   | "<"  { LESS }
   | "<-" { LESSMINUS }
+  | "</" { LESSSLASH }
   | "="  { EQUAL }
   | "["  { LBRACKET }
   | "[|" { LBRACKETBAR }

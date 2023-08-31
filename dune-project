@@ -39,7 +39,8 @@
  (name mlx)
  (implementation
   (extension mlx)
-  (format (run mlx %{input-file})))
+  (preprocess (with-stdin-from %{input-file} (run mlx))))
  (interface
   (extension mlxi)
-  (format (run mlx %{input-file}))))
+  (preprocess (with-stdin-from %{input-file} (run mlx))))
+ )
