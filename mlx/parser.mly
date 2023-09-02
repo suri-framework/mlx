@@ -2509,7 +2509,7 @@ simple_expr:
       props=llist(jsx_attr)
     GREATER 
       children=llist(jsx_children)
-    LESSSLASH mkrhs(val_longident) GREATER {
+    LESSSLASH tag_close=mkrhs(val_longident) GREATER {
     let loc = $loc(tag_open) in
     let tag = mkexp ~loc (Pexp_ident tag_open) in
 
@@ -2522,7 +2522,18 @@ simple_expr:
       Nolabel, mkunit ~loc
     ] in
 
-    Pexp_apply (tag, props @ default_args )
+    if tag_open.txt <> tag_close.txt then
+      let tag_to_str t = Longident.flatten t |> String.concat "." in
+      let position_pair_to_string (start_pos, end_pos) =
+        Printf.sprintf "line %d-%d, characters %d-%d"
+          start_pos.Lexing.pos_lnum
+          end_pos.Lexing.pos_lnum
+          (start_pos.Lexing.pos_cnum - start_pos.Lexing.pos_bol)
+          (end_pos.Lexing.pos_cnum - end_pos.Lexing.pos_bol)
+      in
+
+      failwith ("Open and close tags don't match: '" ^ tag_to_str tag_open.txt ^ "' and '" ^ tag_to_str tag_close.txt ^ "'.  See " ^ position_pair_to_string loc)
+    else Pexp_apply (tag, props @ default_args )
   }
 
 /* handle the cases with no children and a self-closing tag */
