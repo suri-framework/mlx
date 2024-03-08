@@ -35,6 +35,7 @@
   (ocaml (>= "5.0.0"))
   (dune (>= "3.10.0"))
   (mlx :version)
+  tyxml
  ))
 
 (package
